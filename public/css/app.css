@@ -1,0 +1,43 @@
+body {
+  font-family: 'Lato';
+  padding-top: 70px; }
+
+.row {
+  margin-bottom: 10px; }
+
+.panel-body .row {
+  margin-bottom: 0px; }
+
+a:hover,
+a:focus {
+  text-decoration: none; }
+
+form.inline-buttons {
+  display: inline; }
+
+.label {
+  vertical-align: inherit; }
+
+canvas {
+  margin: 0 auto;
+  display: block; }
+
+.pie-legend li span {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 5px; }
+
+.pie-legend {
+  list-style: none; }
+
+.bar-legend li span {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  margin-right: 5px; }
+
+.bar-legend {
+  list-style: none; }
+
+/*# sourceMappingURL=app.css.map */
