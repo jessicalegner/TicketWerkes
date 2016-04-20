@@ -97,7 +97,7 @@ class TicketController extends Controller
     	return redirect('tickets')->with('message', 'Ticket deleted.');
     }
 
-    public function print(Ticket $ticket)
+    public function printTicket(Ticket $ticket)
     {
         // $pdf = App::make('snappy.pdf.wrapper');
         // $pdf->loadHTML('<h1>Test</h1>');
