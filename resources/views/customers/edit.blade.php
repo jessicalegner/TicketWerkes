@@ -6,7 +6,7 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3>Update Customer: {{ $customer->name }} </h3>
-    <form method="POST" action="/customer/{{$customer->id }}" class="form">
+    <form method="POST" action="{{ URL::route('customer.update', $customer->id) }}" class="form">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
         <div class="row">
