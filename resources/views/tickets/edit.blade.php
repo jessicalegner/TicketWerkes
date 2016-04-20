@@ -6,7 +6,7 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h3>Update Ticket: {{ $ticket->id }} </h3>
-    <form method="POST" action="/ticket/{{$ticket->id }}" class="form">
+    <form method="POST" action="{{ URL::route('ticket.update', $ticket->id) }}" class="form">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
         {{ Form::hidden('customer_id', $ticket->customer->id) }}
