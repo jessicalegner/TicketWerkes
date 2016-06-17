@@ -26,7 +26,6 @@ active
                     <div id="dashboardConversions">
                     	<canvas id="locationLoadChart"></canvas>
                     </div>
-                    <div id="locationLoadLegend"></div>
                 </div>
             </div>
         </div>
@@ -45,7 +44,6 @@ active
                     <div id="dashboardConversions">
                     	<canvas id="ticketVolumeChart"></canvas>
                     </div>
-                    <div id="ticketVolumeLegend"></div>
                 </div>
             </div>
         </div>
@@ -58,10 +56,12 @@ active
                             <span>This month</span> <b class="caret"></b>
                         </div>
                     </div> -->
-                    <h3 class="panel-title">Some other item</h3>
+                    <h3 class="panel-title">Ticket Statuses</h3>
                 </div>
                 <div class="panel-body">
-                    
+                    <div id="dashboardConversions">
+                    	<canvas id="ticketStatusChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,58 +72,82 @@ active
 @section('javascript')
 	$(window).load(function(){
 		// LOCATION LOAD CHART
-		var ctx = $("#locationLoadChart").get(0).getContext("2d");
-		var data = [
-		    {
-		        value: 300,
-		        color:"#F7464A",
-		        highlight: "#FF5A5E",
-		        label: "Freeland"
-		    },
-		    {
-		        value: 50,
-		        color: "#46BFBD",
-		        highlight: "#5AD3D1",
-		        label: "Midland"
-		    }
-		]
-		var locationLoadPieChart = new Chart(ctx).Pie(data, {
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+		var ctx = $("#locationLoadChart");
 
+		var data = {
+		    labels: [
+		        "Freeland",
+		        "Midland"
+		    ],
+		    datasets: [
+		        {
+		            data: {{ json_encode($locationTotals) }},
+		            backgroundColor: [
+		                "#FF6384",
+		                "#36A2EB"
+		            ],
+		            hoverBackgroundColor: [
+		                "#FF6384",
+		                "#36A2EB"
+		            ]
+		        }]
+		};
+
+		var locationLoadChart = new Chart(ctx,{
+		    type: 'pie',
+		    data: data
 		});
-
-		var legend = locationLoadPieChart.generateLegend();
-		$("#locationLoadLegend").html(legend);
 
 		// TICKET VOLUME CHART
-		var ctx = $("#ticketVolumeChart").get(0).getContext("2d");
+		var ctx = $("#ticketVolumeChart");
 		var data = {
-	    labels: ["M", "T", "W", "Th", "F", "S"],
-	    datasets: [
-	        {
-	            label: "Last Week",
-	            fillColor: "rgba(220,220,220,0.5)",
-	            strokeColor: "rgba(220,220,220,0.8)",
-	            highlightFill: "rgba(220,220,220,0.75)",
-	            highlightStroke: "rgba(220,220,220,1)",
-	            data: [65, 59, 80, 81, 56, 55]
-	        },
-	        {
-	            label: "This Week",
-	            fillColor: "rgba(151,187,205,0.5)",
-	            strokeColor: "rgba(151,187,205,0.8)",
-	            highlightFill: "rgba(151,187,205,0.75)",
-	            highlightStroke: "rgba(151,187,205,1)",
-	            data: [28, 0, 0, 0, 0, 0]
-	        }
-	    ]
-	};
-		var ticketVolumeBarChart = new Chart(ctx).Bar(data, {
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+		    labels: ["M", "T", "W", "Th", "F", "S"],
+		    datasets: [
+		        {
+		            label: "Last Week",
+		            fillColor: "rgba(220,220,220,0.5)",
+		            strokeColor: "rgba(220,220,220,0.8)",
+		            highlightFill: "rgba(220,220,220,0.75)",
+		            highlightStroke: "rgba(220,220,220,1)",
+		            data: {{ json_encode($lastWeekTickets) }}
+		        },
+		        {
+		            label: "This Week",
+		            fillColor: "rgba(151,187,205,0.5)",
+		            strokeColor: "rgba(151,187,205,0.8)",
+		            highlightFill: "rgba(151,187,205,0.75)",
+		            highlightStroke: "rgba(151,187,205,1)",
+		            data: {{ json_encode($thisWeekTickets) }}
+		        }
+		    ]
+		};
 
+		var ticketVolumeChart = new Chart(ctx,{
+		    type: 'bar',
+		    data: data
 		});
 
-		var tlegend = ticketVolumeBarChart.generateLegend();
-		$("#ticketVolumeLegend").html(tlegend);
+		// TICKET STATUS REPORT
+		var ctx = $("#ticketStatusChart");
+		var data = {
+		    labels: {!! json_encode($ticketStatuses) !!},
+		    datasets: [
+		        {
+		            data: {{ json_encode($ticketStatusCount) }},
+		            backgroundColor: [
+		                "#FF6384",
+		                "#36A2EB"
+		            ],
+		            hoverBackgroundColor: [
+		                "#FF6384",
+		                "#36A2EB"
+		            ]
+		        }]
+		};
+
+		var ticketStatusChart = new Chart(ctx,{
+		    type: 'doughnut',
+		    data: data
+		});
 	});
 @stop

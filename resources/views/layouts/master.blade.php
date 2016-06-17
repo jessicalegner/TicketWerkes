@@ -83,7 +83,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
     <script>@yield('javascript')</script>
 </body>
 </html>

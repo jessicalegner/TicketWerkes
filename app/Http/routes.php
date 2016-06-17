@@ -4,8 +4,8 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/', 'HomeController@index');
-    Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'PagesController@dashboard'));
+    Route::get('/', 'DashboardController@index');
+    Route::get('/dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
     Route::get('/tickets/new', array('as' => 'tickets.new', 'uses' => 'PagesController@newTickets'));
 
     Route::get('tickets', array('as' => 'tickets.index', 'uses' => 'TicketController@index'));
