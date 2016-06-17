@@ -8,9 +8,15 @@ use Carbon\Carbon;
 use App\Ticket;
 use App\Status;
 use DB;
+use Auth;
 
 class DashboardController extends Controller
 {
+	public function __construct() 
+	{
+		$this->middleware('auth');
+	}
+	
     public function index() 
   	{
   		$locationTotals = $this->locationLoadReport();
