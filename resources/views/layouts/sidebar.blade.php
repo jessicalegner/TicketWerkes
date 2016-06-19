@@ -11,6 +11,6 @@
     <ul class="nav nav-sidebar">
         <li class="nav-header">Customers</li>
         <li class="@yield('customers.class')"><a href="{{ URL::route('customers.index') }}"><i class="fa fa-users"></i> All Customers</a></li> 
-        <li class="@yield('newcustomer.class')"><a href="{{ URL::route('customer.create') }}"><i class="fa fa-user-plus"></i> Add New Customer</a></li> 
+        <li class="@yield('newcustomer.class')"><a href="{{ URL::route('customer.create') }}"><i class="fa fa-user-plus"></i> Create Customer</a></li> 
     </ul>
 </div>

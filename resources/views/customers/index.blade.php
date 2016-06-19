@@ -18,7 +18,7 @@
             <h3>All Customers</h3>
         </div>
         <div class="col-xs-6">
-            <a href="{{ URL::route('customer.create') }}" class="pull-right"><button type="button" class="btn btn-success btn-md"><i class="fa fa-plus"></i> Add New Customer</button></a>
+            <a href="{{ URL::route('customer.create') }}" class="pull-right"><button type="button" class="btn btn-success btn-md"><i class="fa fa-plus"></i> Create Customer</button></a>
         </div>
     </div>
 

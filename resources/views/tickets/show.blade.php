@@ -4,7 +4,14 @@
 
 @section('content')
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h3><span class="label label-{{ $ticket->status->color }}">{{ $ticket->status->name }}</span> {{ $ticket->id }} <span class="small pull-right"><a href="{{ URL::route('ticket.edit', $ticket->id) }}"><i class="fa fa-pencil"></i> Edit Ticket</a></span></h3>
+    <div class="row">
+        <div class="col-xs-6">
+            <h3><span class="label label-{{ $ticket->status->color }}">{{ $ticket->status->name }}</span> {{ $ticket->id }} <span class="small pull-right"></span></h3>
+        </div>
+        <div class="col-xs-6">
+            <a href="{{ URL::route('ticket.edit', $ticket->id) }}" class="pull-right"><button type="button" class="btn btn-warning btn-md"><i class="fa fa-pencil"></i> Edit Ticket</button></a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
