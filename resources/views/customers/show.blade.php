@@ -4,7 +4,14 @@
 
 @section('content')
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h3>{{ $customer->name }}</h3>
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>{{ $customer->name }}</h3>
+        </div>
+        <div class="col-xs-6">
+            <a href="{{ URL::route('customer.edit', $customer->id) }}" class="pull-right"><button type="button" class="btn btn-warning btn-md"><i class="fa fa-pencil"></i> Edit Customer</button></a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-5">
             <div class="panel panel-default">
