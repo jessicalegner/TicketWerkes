@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Carbon\Carbon;
+use App\Customer;
 use App\Ticket;
 use App\Status;
 use DB;
@@ -16,7 +17,7 @@ class DashboardController extends Controller
 	{
 		$this->middleware('auth');
 	}
-	
+
     public function index() 
   	{
   		$locationTotals = $this->locationLoadReport();
@@ -24,7 +25,8 @@ class DashboardController extends Controller
   		$thisWeekTickets = $this->thisWeekTickets();
   		$ticketStatusCount = $this->ticketStatusReport();
   		$ticketStatuses = $this->ticketStatuses();
-    	return view('dashboard', compact('locationTotals', 'thisWeekTickets', 'lastWeekTickets', 'ticketStatuses', 'ticketStatusCount'));
+  		$newCustomerCount = $this->getNewCustomerCount();
+    	return view('dashboard', compact('locationTotals', 'thisWeekTickets', 'lastWeekTickets', 'ticketStatuses', 'ticketStatusCount', 'newCustomerCount'));
   	}
 
   	private function locationLoadReport() 
@@ -77,5 +79,16 @@ class DashboardController extends Controller
   			->groupBy('statuses.id')
   			->orderBy('statuses.id')
   			->lists('name');
+  	}
+
+  	private function getNewCustomerCount()
+  	{
+  		$now = Carbon::now()->toDateString();
+  		$startOfMonth = Carbon::now()->startOfMonth()->toDateString();
+
+  		return Customer::where('created_at', '>=', $startOfMonth)
+  			->where('created_at', '<=', $now)
+  			->groupBy('created_at')
+  			->count();
   	}
 }

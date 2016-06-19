@@ -31,22 +31,20 @@ canvas {
 	display: block;
 }
 
-.pie-legend li span {
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    margin-right: 5px;
-}
-.pie-legend {
-    list-style: none;    
+@media (min-width: 1200px){
+    .nav-container {
+        width: 100%;
+    }
 }
 
-.bar-legend li span {
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    margin-right: 5px;
+@media (min-width: 992px){
+    .nav-container {
+        width: 100%;
+    }
 }
-.bar-legend {
-    list-style: none;    
+
+@media (min-width: 768px){
+    .nav-container {
+        width: 100%;
+    }
 }

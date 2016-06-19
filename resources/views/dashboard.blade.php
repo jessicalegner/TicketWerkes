@@ -38,7 +38,7 @@ active
                             <span>This month</span> <b class="caret"></b>
                         </div>
                     </div> -->
-                    <h3 class="panel-title">Ticket Volume</h3>
+                    <h3 class="panel-title">New Ticket Volume</h3>
                 </div>
                 <div class="panel-body">
                     <div id="dashboardConversions">
@@ -62,6 +62,22 @@ active
                     <div id="dashboardConversions">
                     	<canvas id="ticketStatusChart"></canvas>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <!-- <div class="panel-actions">
+                        <div id="reportrange" class="pull-right">
+                            <i class="fa fa-calendar"></i>
+                            <span>This month</span> <b class="caret"></b>
+                        </div>
+                    </div> -->
+                    <h3 class="panel-title">New Customers this Month</h3>
+                </div>
+                <div class="panel-body">
+                	<h1 class="text-center">{{ $newCustomerCount }}</h1>
                 </div>
             </div>
         </div>
@@ -105,18 +121,20 @@ active
 		    datasets: [
 		        {
 		            label: "Last Week",
-		            fillColor: "rgba(220,220,220,0.5)",
-		            strokeColor: "rgba(220,220,220,0.8)",
-		            highlightFill: "rgba(220,220,220,0.75)",
-		            highlightStroke: "rgba(220,220,220,1)",
+		            backgroundColor: "rgba(255,99,132,0.2)",
+		            borderColor: "rgba(255,99,132,1)",
+		            borderWidth: 1,
+		            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+		            hoverBorderColor: "rgba(255,99,132,1)",
 		            data: {{ json_encode($lastWeekTickets) }}
 		        },
 		        {
 		            label: "This Week",
-		            fillColor: "rgba(151,187,205,0.5)",
-		            strokeColor: "rgba(151,187,205,0.8)",
-		            highlightFill: "rgba(151,187,205,0.75)",
-		            highlightStroke: "rgba(151,187,205,1)",
+		            backgroundColor: "rgba(102,163,226,0.2)",
+		            borderColor: "rgba(102,163,226,1)",
+		            borderWidth: 1,
+		            hoverBackgroundColor: "rgba(102,163,226,0.4)",
+		            hoverBorderColor: "rgba(102,163,226,1)",
 		            data: {{ json_encode($thisWeekTickets) }}
 		        }
 		    ]

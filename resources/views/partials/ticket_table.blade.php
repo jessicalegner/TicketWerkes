@@ -23,7 +23,7 @@
                 <a href="{{ URL::route('ticket.edit', $ticket->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                 <a href="{{ URL::route('ticket.print', $ticket->id) }}" target="_blank" class="btn btn-success"><i class="fa fa-print"></i></a>
                 {{ Form::open(array('route' => array('ticket.destroy', 'id' => $ticket->id), 'class' => 'inline-buttons', 'method' => 'delete', 'id' => 'deleteButton')) }}
-                <button type="submit" class="btn btn-danger" data-confirm="Are you sure you want to delete?"><i class="fa fa-trash"></i></button>
+                <button type="submit" class="btn btn-danger" data-confirm="Are you sure you want to delete?" onclick="return confirm('Are you sure you want to delete this ticket?')"><i class="fa fa-trash"></i></button>
                 {{ Form::close() }}
             </td>
         </tr>

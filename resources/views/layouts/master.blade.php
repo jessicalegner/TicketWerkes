@@ -25,7 +25,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container nav-container">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -37,8 +37,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    TicketWerkes
+                <a class="navbar-brand" href="{{ url('/dashbaord') }}">
+                    <i class="fa fa-gears"></i> TicketWerkes
                 </a>
             </div>
 
