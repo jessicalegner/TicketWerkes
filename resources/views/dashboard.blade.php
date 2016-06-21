@@ -97,7 +97,7 @@ active
 		    ],
 		    datasets: [
 		        {
-		            data: {!! json_encode($locationTotals) !!},
+		            data: {{ json_encode($locationTotals) }},
 		            backgroundColor: [
 		                "#FF6384",
 		                "#36A2EB"
@@ -151,7 +151,7 @@ active
 		    labels: {!! json_encode($ticketStatuses) !!},
 		    datasets: [
 		        {
-		            data: {!! json_encode($ticketStatusCount) !!},
+		            data: {{ json_encode($ticketStatusCount) }},
 		            backgroundColor: [
 		                "#FF6384",
 		                "#36A2EB"
