@@ -45,12 +45,13 @@ $(document).ready(function(){
     });
 
     $('button[data-confirm]').click(function(ev) {
+        $thisForm = $(this).parent('form');
         if (!$('#dataConfirmModal').length) {
             $('body').append('<div class="modal fade" tabindex="-1" role="dialog" id="dataConfirmModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">Delete Ticket</h4></div><div class="modal-body"><p>One fine body&hellip;</p></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">No, Take Me Back to Safety</button><button id="dataConfirmOK" type="button" class="btn btn-danger">Delete</button></div></div><!-- /.modal-content --></div><!-- /.modal-dialog --></div><!-- /.modal -->');
         } 
         $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
         $('#dataConfirmOK').click(function() {
-            $('#deleteButton').submit();
+            $thisForm.submit();
         });
         $('#dataConfirmModal').modal({show:true});
         return false;
