@@ -126,7 +126,7 @@ active
 		            borderWidth: 1,
 		            hoverBackgroundColor: "rgba(255,99,132,0.4)",
 		            hoverBorderColor: "rgba(255,99,132,1)",
-		            data: {{ json_encode($lastWeekTickets) }}
+		            data: {{ json_encode($lastWeekTickets, JSON_NUMERIC_CHECK) }}
 		        },
 		        {
 		            label: "This Week",
@@ -135,7 +135,7 @@ active
 		            borderWidth: 1,
 		            hoverBackgroundColor: "rgba(102,163,226,0.4)",
 		            hoverBorderColor: "rgba(102,163,226,1)",
-		            data: {{ json_encode($thisWeekTickets) }}
+		            data: {{ json_encode($thisWeekTickets, JSON_NUMERIC_CHECK) }}
 		        }
 		    ]
 		};
@@ -151,7 +151,7 @@ active
 		    labels: {!! json_encode($ticketStatuses) !!},
 		    datasets: [
 		        {
-		            data: {{ json_encode($ticketStatusCount) }},
+		            data: {{ json_encode($ticketStatusCount, JSON_NUMERIC_CHECK) }},
 		            backgroundColor: [
 		                "#FF6384",
 		                "#36A2EB"
