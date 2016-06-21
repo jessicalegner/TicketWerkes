@@ -97,7 +97,7 @@ active
 		    ],
 		    datasets: [
 		        {
-		            data: {{ json_encode($locationTotals) }},
+		            data: {{ json_encode($locationTotals, JSON_NUMERIC_CHECK) }},
 		            backgroundColor: [
 		                "#FF6384",
 		                "#36A2EB"
