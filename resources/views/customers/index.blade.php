@@ -48,7 +48,7 @@
                         <a href="{{ URL::route('customer.show', $customer->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                         <a href="{{ URL::route('customer.edit', $customer->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                         {{ Form::open(array('route' => array('customer.destroy', 'id' => $customer->id), 'class' => 'inline-buttons', 'method' => 'delete', 'id' => 'deleteButton')) }}
-                        <button type="submit" class="btn btn-danger" data-confirm="Are you sure you want to delete?"  onclick="return confirm('Are you sure you want to delete this customer?')"><i class="fa fa-trash"></i></button>
+                        <button type="submit" class="btn btn-danger" data-confirm="Are you sure you want to delete?"><i class="fa fa-trash"></i></button>
                         {{ Form::close() }}
                     </td>
                 </tr>
