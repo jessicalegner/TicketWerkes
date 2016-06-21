@@ -5,6 +5,7 @@
                 <th>Ticket No.</th>
                 <th>Status</th>
                 <th>Customer</th>
+                <th>Device Phone Number</th>
                 <th>Description</th>
                 <th>Updated</th>
                 <th class="text-center">Actions</th>
@@ -16,6 +17,7 @@
             <td><a href="{{ URL::route('ticket.show', $ticket->id) }}">{{ $ticket->id }}</a></td>
             <td><span class="label label-{{ $ticket->status->color }}">{{ $ticket->status->name }}</span></td>
             <td>{{ $ticket->customer->name }}</td>
+            <td>{{ $ticket->device_phone_number }}</td>
             <td>{{ $ticket->description }}</td>
             <td>{{ $ticket->updated_at->format('m/d/Y') }}</td>
             <td class="actions text-center">
