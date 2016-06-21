@@ -40,9 +40,9 @@ class DashboardController extends Controller
   	private function lastWeekTickets()
   	{
   		Carbon::setWeekStartsAt(Carbon::MONDAY);
-		Carbon::setWeekEndsAt(Carbon::SATURDAY);
-  		$lastMonday = Carbon::now()->startOfWeek()->subWeeks(1)->toDateString();
-  		$lastSaturday = Carbon::now()->endOfWeek()->subWeeks(1)->toDateString();
+		  Carbon::setWeekEndsAt(Carbon::SATURDAY);
+  		$lastMonday = Carbon::now()->startOfWeek()->subWeeks(1);
+  		$lastSaturday = Carbon::now()->endOfWeek()->subWeeks(1);
 
    		return Ticket::select( DB::raw('COUNT(id) as `count`'))
   			->where('created_at', '>=', $lastMonday)
@@ -54,8 +54,8 @@ class DashboardController extends Controller
 
   	private function thisWeekTickets()
   	{
-  		$thisMonday = Carbon::now()->startOfWeek()->toDateString();
-  		$thisSaturday = Carbon::now()->endOfWeek()->toDateString();
+  		$thisMonday = Carbon::now()->startOfWeek();
+  		$thisSaturday = Carbon::now()->endOfWeek();
 
   		return Ticket::select( DB::raw('COUNT(id) as `count`'))
   			->where('created_at', '>=', $thisMonday)
@@ -84,10 +84,9 @@ class DashboardController extends Controller
   	private function getNewCustomerCount()
   	{
   		$now = Carbon::now()->toDateString();
-  		$startOfMonth = Carbon::now()->startOfMonth()->toDateString();
+  		$startOfMonth = Carbon::now()->startOfMonth();
 
-  		return Customer::where('created_at', '>=', $startOfMonth)
-  			->where('created_at', '<=', $now)
+  		return DB::table('customers')->where('created_at', '>=', $startOfMonth)
   			->groupBy('created_at')
   			->count();
   	}
