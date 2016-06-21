@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
 
     	$tables = array(
 			'users',
-			'statuses'
+			'statuses',
+            'customers'
         );
 
         foreach ($tables as $table){
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
 		}
         // $this->call(UserTableSeeder::class);
         $this->call('UsersTableSeeder');
-		$this->call('StatusesTableSeeder');
+        $this->call('StatusesTableSeeder');
+		$this->call('CustomersTableSeeder');
     }
 }
