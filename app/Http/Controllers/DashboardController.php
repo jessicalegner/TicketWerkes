@@ -47,7 +47,7 @@ class DashboardController extends Controller
    		return Ticket::select( DB::raw('COUNT(id) as `count`'))
   			->where('created_at', '>=', $lastMonday)
   			->where('created_at', '<=', $lastSaturday)
-  			->groupBy(DB::raw('DATE(created_at)')
+  			->groupBy(DB::raw('DATE(created_at)'))
         ->orderBy('created_at', 'DESC')
   			->lists('count');
   	}
@@ -63,7 +63,7 @@ class DashboardController extends Controller
   		return Ticket::select( DB::raw('COUNT(id) as `count`'))
         ->where('created_at', '>=', $thisMonday)
   			->where('created_at', '<=', $thisSaturday)
-  			->groupBy(DB::raw('DATE(created_at)')
+  			->groupBy(DB::raw('DATE(created_at)'))
         ->orderBy('created_at', 'DESC')
   			->lists('count');
   	}
