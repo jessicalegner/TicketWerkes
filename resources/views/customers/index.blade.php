@@ -24,7 +24,7 @@
 
     @if($customers)
         <div class="well well-sm">
-            <table id="customersTable" class="display" cellspacing="0" width="100%">
+            <table id="customersTable" class="display responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Customer</th>
