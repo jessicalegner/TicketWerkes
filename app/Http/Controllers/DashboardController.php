@@ -54,14 +54,17 @@ class DashboardController extends Controller
 
   	private function thisWeekTickets()
   	{
-  		$thisMonday = Carbon::now()->startOfWeek();
-  		$thisSaturday = Carbon::now()->endOfWeek();
+      Carbon::setWeekStartsAt(Carbon::MONDAY);
+      Carbon::setWeekEndsAt(Carbon::SATURDAY);
+  		$now = Carbon::now();
+      $thisMonday = $now->startOfWeek()->toDateString();
+  		$thisSaturday = $now->endOfWeek()->toDateString();
 
   		return Ticket::select( DB::raw('COUNT(id) as `count`'))
-  			->where('created_at', '>=', $thisMonday)
+        ->where('created_at', '>=', $thisMonday)
   			->where('created_at', '<=', $thisSaturday)
   			->groupBy('created_at')
-        	->orderBy('created_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
   			->lists('count');
   	}
 
